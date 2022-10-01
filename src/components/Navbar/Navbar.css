@@ -1,0 +1,46 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .25rem;
+    background-color: #e6aa68;
+}
+.title {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-area {
+    display: flex;
+    text-decoration: none;
+    color:black;
+}
+
+
+.cart-area {
+    width: 3.5rem;
+    margin-right: .75rem;
+ }
+
+.ham-menu {
+    display: none;
+}
+
+@media screen and (max-width: 850px) {
+ .title {
+    display: none;
+ }
+ .cart-area {
+    display: none;
+ }
+
+ .ham-menu {
+    display: block;
+    margin-right: 1rem;
+ }
+
+ .ham-menu:hover {
+    cursor: pointer;
+ }
+
+}

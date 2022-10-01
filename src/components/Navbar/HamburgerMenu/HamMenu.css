@@ -1,0 +1,32 @@
+.ham-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0;
+    text-align: center;
+    background-color: #02020b;
+    height: 93.5vh;
+    list-style-type: none;
+    padding-left: 0;
+    position: fixed;
+    width: 100%;
+}
+
+li {
+    list-style: none;
+    margin-bottom: 1rem;
+    font-size: large;
+    color: whitesmoke;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+.profile {
+    text-decoration: none;
+    border: 1px solid whitesmoke;
+    margin: 0rem 10rem 0rem 10rem;
+    padding: 1.5rem 0 1.5rem 0;
+    color: whitesmoke;
+}

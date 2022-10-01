@@ -1,0 +1,23 @@
+.search-bar {
+    width: 60%;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+}
+
+.mg {
+    height: 2.5rem;
+    border-radius: 0px 6px 6px 0px;
+    background-color: whitesmoke;
+    padding: 4px 4px 4px 4px;
+    border: 1px solid black;
+}
+
+.search-input {
+    border-radius: 6px 0px 0px 6px;
+    height: 2.5rem;
+    background-color: whitesmoke;
+    width: 100%;
+}
