@@ -1,25 +1,30 @@
-import { useState, useEffect } from "react";
-import { default as axios } from "axios";
 import scMG from "../../../assets/sc-mg.svg";
 import "./SearchBar.css";
 
 const SearchBar = () => {
-  useEffect(() => {
-    const url = "http://localhost:8000/products";
-    axios.get(url).then((res) => console.log(res));
-  });
-
   return (
-    <div className="search-bar">
+    <div className="search">
       <form className="form">
+        <select name="categories" className="form--select">
+          <option>All</option>
+          <option>Top Deals</option>
+          <option>Crypto</option>
+          <option>Toys</option>
+          <option>Clothasdasdasdasdasding</option>
+        </select>
         <input
-          className="search-input"
+          className="search--input"
           type="text"
-          id="market-search"
           width="100%"
           placeholder="Search marketplace..."
         />
-        <input className="mg" type="image" src={scMG} alt="Search" />
+        <input
+          id="magnifying-glass-icon"
+          type="image"
+          src={scMG}
+          alt="Search"
+          width="40px"
+        />
       </form>
     </div>
   );
