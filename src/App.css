@@ -2,10 +2,28 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  content: '';
+  content: "";
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 0.75px;
+}
+
+.btn {
+  background-color: #02020b;
+  padding: 1rem;
+  color: whitesmoke;
+  font-weight: bolder;
+  transition: all ease-in-out 0.25s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+  color: black;
+}
+
+.btn:active {
+  background-color: gray;
 }
