@@ -4,13 +4,13 @@ import "./SearchBar.css";
 const SearchBar = () => {
   return (
     <div className="search">
-      <form className="form">
+      <form className="search-bar-form">
         <select name="categories" className="form--select">
           <option>All</option>
           <option>Top Deals</option>
           <option>Crypto</option>
           <option>Toys</option>
-          <option>Clothasdasdasdasdasding</option>
+          <option>Clothing</option>
         </select>
         <input
           className="search--input"
@@ -23,7 +23,6 @@ const SearchBar = () => {
           type="image"
           src={scMG}
           alt="Search"
-          width="40px"
         />
       </form>
     </div>

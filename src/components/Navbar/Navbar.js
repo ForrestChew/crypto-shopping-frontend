@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import houseIcon from "../../assets/house-icon-svg.svg";
 import SearchBar from "./SearchBar/SearchBar";
 import cartIconSvg from "../../assets/cart-icon-svg.svg";
 import hamMenuIcon from "../../assets/ham-menu-icon-svg.svg";
+import { AuthedContext } from "../../contexts/AuthedProvider";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ authStatus }) => {
   const [isHamMenuOpen, setIsHamMenuOpen] = useState(false);
+
   return (
     <>
       <nav>
@@ -29,8 +31,7 @@ const Navbar = () => {
           onClick={() => setIsHamMenuOpen(!isHamMenuOpen)}
         />
       </nav>
-
-      <div className="subnav-container">
+      <div className="subnav">
         <ul className={isHamMenuOpen ? "ham--menu" : "menu"}>
           <NavLink
             className={(navData) =>
@@ -71,19 +72,57 @@ const Navbar = () => {
               Orders
             </li>
           </NavLink>
-          <NavLink
-            className={(navData) =>
-              navData.isActive ? "menu--item-active" : "menu--item"
-            }
-            to="/profile"
-          >
-            <li
-              className="menu--item"
-              onClick={() => isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)}
+          {authStatus && (
+            <NavLink
+              className={(navData) =>
+                navData.isActive ? "menu--item-active" : "menu--item"
+              }
+              to="/profile"
             >
-              Profile
-            </li>
-          </NavLink>
+              <li
+                className="menu--item"
+                onClick={() =>
+                  isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)
+                }
+              >
+                Profile
+              </li>
+            </NavLink>
+          )}
+          {!authStatus && (
+            <NavLink
+              className={(navData) =>
+                navData.isActive ? "menu--item-active" : "menu--item"
+              }
+              to="/login"
+            >
+              <li
+                className="menu--item"
+                onClick={() =>
+                  isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)
+                }
+              >
+                Login
+              </li>
+            </NavLink>
+          )}
+          {!authStatus && (
+            <NavLink
+              className={(navData) =>
+                navData.isActive ? "menu--item-active" : "menu--item"
+              }
+              to="/create-account"
+            >
+              <li
+                className="menu--item"
+                onClick={() =>
+                  isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)
+                }
+              >
+                Create Account
+              </li>
+            </NavLink>
+          )}
         </ul>
       </div>
     </>

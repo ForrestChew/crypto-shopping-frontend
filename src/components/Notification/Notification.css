@@ -1,0 +1,16 @@
+.notification {
+  border: 1px solid;
+  border-radius: 8px 8px 8px 8px;
+  padding: 0rem 1rem 0rem 1rem;
+  color: white;
+  height: fit-content;
+  text-align: center;
+}
+
+.notification-success {
+  background-color: #8be48f;
+}
+
+.notification-error {
+  background-color: #f97068;
+}

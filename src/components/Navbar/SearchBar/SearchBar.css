@@ -1,8 +1,8 @@
 #magnifying-glass-icon {
-  width: 1.75rem;
   border-radius: 0px 6px 6px 0px;
-  background-color: whitesmoke;
   padding-right: 5px;
+  border: 1px solid;
+  width: 1.75rem;
 }
 
 .search {
@@ -10,7 +10,7 @@
   width: 65%;
 }
 
-.form {
+.search-bar-form {
   height: 100%;
   width: 100%;
   display: flex;
@@ -20,21 +20,14 @@
   border-radius: 6px 0px 0px 6px;
   width: 5%;
   border: none;
-  background-color: whitesmoke;
+  border: 1px solid;
 }
 
 .search--input {
   height: 2.5rem;
   width: 100%;
   border: none;
-  background-color: whitesmoke;
-}
-
-.search--btn {
-  border-radius: 0px 6px 6px 0px;
-  padding: 4px 4px 4px 4px;
-  word-wrap: break-word;
-  max-width: 100%;
+  border: 1px solid;
 }
 
 @media screen and (max-width: 850px) {
