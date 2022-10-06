@@ -1,0 +1,35 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.form {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  border: 1px solid;
+  padding: 5%;
+  box-shadow: 2px 2px 2px #02020b;
+}
+
+.form__heading {
+  text-align: center;
+  color: #02020b;
+  text-decoration: underline;
+}
+
+.form__label {
+  padding: 1rem;
+  font-weight: bolder;
+}
+
+.form__input {
+  padding: 1rem;
+}
+
+.form__btn {
+  margin-top: 10%;
+  width: 50%;
+}
