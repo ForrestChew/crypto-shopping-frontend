@@ -1,6 +1,6 @@
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
 export const CP_BACKEND_API_BASE_URL =
   process.env.REACT_APP_CP_BACKEND_API_BASE_URL;
+export const CP_FRONTEND_API_BASE_URL = process.env.REACT_APP_FRONTEND_BASE_URL;
 export const LOGIN_FORM_SPEC = {
   title: "Login",
   labelTitles: ["Email", "Password"],
