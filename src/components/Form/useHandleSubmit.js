@@ -12,7 +12,7 @@ export const useHandleSubmit = () => {
           successStatus: loginRes,
           redirectPath: "/",
         };
-        if (loginRes) setIsAuthed(true);
+        if (loginRes.ok) setIsAuthed(true);
         return loginResObj;
       }
       case "Create Account": {
@@ -22,10 +22,10 @@ export const useHandleSubmit = () => {
           formValues["confirm password"]
         );
         const createUserResObj = {
-          successStatus: createUserRes,
+          successStatus: createUserRes ?? false,
           redirectPath: "/",
         };
-        if (createUserRes) setIsAuthed(true);
+        if (createUserRes?.ok) setIsAuthed(true);
         return createUserResObj;
       }
       default: {

@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import "./Notification.css";
 
-const Notification = ({ isError }) => {
+const Notification = ({ isSuccess }) => {
   const [messageType, setMessageType] = useState("");
   useEffect(() => {
-    if (isError) {
-      setMessageType("Error: Try again later");
-    } else {
+    if (isSuccess) {
       setMessageType("Success");
+    } else {
+      setMessageType("Error: Try again later");
     }
   });
 
   return (
     <div
       className={
-        isError
-          ? "notification notification-error"
-          : "notification notification-success"
+        isSuccess
+          ? "notification notification-success"
+          : "notification notification-error"
       }
     >
       <p>{messageType}</p>

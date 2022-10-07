@@ -16,7 +16,7 @@ export const login = async (username, password) => {
 };
 
 export const createUser = async (username, password, confirmedPassword) => {
-  if (password !== confirmedPassword) return "Passwords do not Match";
+  if (password !== confirmedPassword) return;
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },

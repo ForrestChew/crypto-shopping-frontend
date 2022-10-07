@@ -1,12 +1,15 @@
 import { useState, Fragment } from "react";
 import { useHandleSubmit } from "./useHandleSubmit";
 import { useNavigate } from "react-router-dom";
+import Notification from "../Notification/Notification";
 import "./Form.css";
 
 const Form = ({ formSpec: { title, labelTitles, inputFields } }) => {
   const [inputValues, setInputValues] = useState(
     inputFields.reduce((prev, curr) => ({ ...prev, [curr]: "" }), {})
   );
+  const [notificationSuccess, setNotificationSuccess] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleInputChange = (e) => {
     const name = e.target.name;
@@ -21,10 +24,15 @@ const Form = ({ formSpec: { title, labelTitles, inputFields } }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const submitStatus = await handleClientReq(title, inputValues);
-    if (submitStatus.successStatus) {
+    setNotificationSuccess(submitStatus.successStatus.ok);
+    setShowNotification(true);
+    if (submitStatus.successStatus.ok) {
       const redirectPath = submitStatus.redirectPath;
       navigate(redirectPath);
     }
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 3000);
   };
 
   return (
@@ -50,6 +58,7 @@ const Form = ({ formSpec: { title, labelTitles, inputFields } }) => {
           );
         })}
         <button className="btn form__btn">{title}</button>
+        {showNotification && <Notification isError={notificationSuccess} />}
       </form>
     </div>
   );
