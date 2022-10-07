@@ -1,5 +1,6 @@
 import { useState, Fragment } from "react";
 import { useHandleSubmit } from "./useHandleSubmit";
+import { useNavigate } from "react-router-dom";
 import "./Form.css";
 
 const Form = ({ formSpec: { title, labelTitles, inputFields } }) => {
@@ -13,11 +14,19 @@ const Form = ({ formSpec: { title, labelTitles, inputFields } }) => {
     setInputValues({ ...inputValues, [name]: value });
   };
 
-  let handleFormSubmitHook = useHandleSubmit;
-  const handleFormSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const { handleClientReq } = useHandleSubmit();
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    handleFormSubmitHook(title, inputValues);
+    const submitStatus = await handleClientReq(title, inputValues);
+    if (submitStatus.successStatus) {
+      const redirectPath = submitStatus.redirectPath;
+      navigate(redirectPath);
+    }
   };
+
   return (
     <div className="form-container" onSubmit={handleFormSubmit}>
       <form className="form">
