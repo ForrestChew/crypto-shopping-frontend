@@ -1,10 +1,9 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import houseIcon from "../../assets/house-icon-svg.svg";
 import SearchBar from "./SearchBar/SearchBar";
 import cartIconSvg from "../../assets/cart-icon-svg.svg";
 import hamMenuIcon from "../../assets/ham-menu-icon-svg.svg";
-import { AuthedContext } from "../../contexts/AuthedProvider";
 import "./Navbar.css";
 
 const Navbar = ({ authStatus }) => {
