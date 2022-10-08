@@ -1,37 +1,46 @@
-import { useState, Fragment } from "react";
+import { useReducer, Fragment } from "react";
 import { useHandleSubmit } from "./useHandleSubmit";
 import { useNavigate } from "react-router-dom";
+import { formReducer } from "./reducers";
 import Notification from "../Notification/Notification";
 import "./Form.css";
 
 const Form = ({ formSpec: { title, labelTitles, inputFields } }) => {
-  const [inputValues, setInputValues] = useState(
-    inputFields.reduce((prev, curr) => ({ ...prev, [curr]: "" }), {})
+  const [formState, dispatch] = useReducer(
+    formReducer,
+    inputFields.reduce((prev, curr) => ({ ...prev, [curr]: "" }), {
+      notificationSuccess: false,
+      showNotification: false,
+    })
   );
-  const [notificationSuccess, setNotificationSuccess] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
 
   const handleInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setInputValues({ ...inputValues, [name]: value });
+    dispatch({
+      type: "HANDLE INPUT TEXT",
+      field: name,
+      payload: value,
+    });
   };
 
-  const navigate = useNavigate();
-
   const { handleClientReq } = useHandleSubmit();
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const submitStatus = await handleClientReq(title, inputValues);
-    setNotificationSuccess(submitStatus.successStatus.ok);
-    setShowNotification(true);
+    const submitStatus = await handleClientReq(title, formState);
+
+    dispatch({
+      type: "NOTIFICATION START",
+      field: submitStatus.successStatus.ok,
+    });
     if (submitStatus.successStatus.ok) {
       const redirectPath = submitStatus.redirectPath;
       navigate(redirectPath);
     }
     setTimeout(() => {
-      setShowNotification(false);
+      dispatch({ type: "NOTIFICATION END" });
     }, 3000);
   };
 
@@ -58,7 +67,9 @@ const Form = ({ formSpec: { title, labelTitles, inputFields } }) => {
           );
         })}
         <button className="btn form__btn">{title}</button>
-        {showNotification && <Notification isError={notificationSuccess} />}
+        {formState.showNotification && (
+          <Notification isError={formState.notificationSuccess} />
+        )}
       </form>
     </div>
   );
