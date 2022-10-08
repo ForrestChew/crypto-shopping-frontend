@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { login, createUser } from "../../api/postReqs";
+import { login, createUser } from "../../api/posts";
 import { AuthedContext } from "../../contexts/AuthedProvider";
 
 export const useHandleSubmit = () => {
