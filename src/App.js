@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { getCurrentUser } from "./api/gets";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
@@ -12,7 +13,7 @@ import { LOGIN_FORM_SPEC, CREATE_ACCOUNT_FORM_SPEC } from "./constants";
 import { UserContext } from "./contexts/UserProvider";
 import "./App.css";
 
-function App() {
+const App = () => {
   const [user] = useContext(UserContext);
   return (
     <div className="App">
@@ -40,6 +41,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;
