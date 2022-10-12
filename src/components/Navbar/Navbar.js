@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import houseIcon from "../../assets/house-icon-svg.svg";
 import SearchBar from "./SearchBar/SearchBar";
 import cartIconSvg from "../../assets/cart-icon-svg.svg";
@@ -14,15 +14,20 @@ const Navbar = ({ authStatus }) => {
       <nav>
         <a href="http://localhost:3000" className="logo">
           <img id="house-icon" src={houseIcon} alt="Not Found" />
-          <h3 id="logo--heading">
+          <h3 id="logo-heading">
             <em>Crypto</em>
             <em>Shopping</em>
           </h3>
         </a>
         <SearchBar />
-        <a href="http://localhost:3000" className="cart">
-          <img id="cart-icon" src={cartIconSvg} alt="Not Found" />
-        </a>
+        <Link to="/cart">
+          <img
+            id="cart-icon"
+            className="cart"
+            src={cartIconSvg}
+            alt="Not Found"
+          />
+        </Link>
         <img
           id="ham-icon"
           src={hamMenuIcon}
@@ -31,15 +36,15 @@ const Navbar = ({ authStatus }) => {
         />
       </nav>
       <div className="subnav">
-        <ul className={isHamMenuOpen ? "ham--menu" : "menu"}>
+        <ul className={isHamMenuOpen ? "menu-ham" : "menu"}>
           <NavLink
             className={(navData) =>
-              navData.isActive ? "menu--item-active" : "menu--item"
+              navData.isActive ? "menu__item-active" : "menu__item"
             }
             to="/top-deals"
           >
             <li
-              className="menu--item"
+              className="menu__item"
               onClick={() => isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)}
             >
               Top Deals
@@ -47,12 +52,12 @@ const Navbar = ({ authStatus }) => {
           </NavLink>
           <NavLink
             className={(navData) =>
-              navData.isActive ? "menu--item-active" : "menu--item"
+              navData.isActive ? "menu__item-active" : "menu__item"
             }
             to="/crypto"
           >
             <li
-              className="menu--item"
+              className="menu__item"
               onClick={() => isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)}
             >
               Crypto
@@ -60,12 +65,12 @@ const Navbar = ({ authStatus }) => {
           </NavLink>
           <NavLink
             className={(navData) =>
-              navData.isActive ? "menu--item-active" : "menu--item"
+              navData.isActive ? "menu__item-active" : "menu__item"
             }
             to="/orders"
           >
             <li
-              className="menu--item"
+              className="menu__item"
               onClick={() => isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)}
             >
               Orders
@@ -74,12 +79,12 @@ const Navbar = ({ authStatus }) => {
           {authStatus && (
             <NavLink
               className={(navData) =>
-                navData.isActive ? "menu--item-active" : "menu--item"
+                navData.isActive ? "menu__item-active" : "menu__item"
               }
               to="/profile"
             >
               <li
-                className="menu--item"
+                className="menu__item"
                 onClick={() =>
                   isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)
                 }
@@ -91,12 +96,12 @@ const Navbar = ({ authStatus }) => {
           {!authStatus && (
             <NavLink
               className={(navData) =>
-                navData.isActive ? "menu--item-active" : "menu--item"
+                navData.isActive ? "menu__item-active" : "menu__item"
               }
               to="/login"
             >
               <li
-                className="menu--item"
+                className="menu__item"
                 onClick={() =>
                   isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)
                 }
@@ -108,12 +113,12 @@ const Navbar = ({ authStatus }) => {
           {!authStatus && (
             <NavLink
               className={(navData) =>
-                navData.isActive ? "menu--item-active" : "menu--item"
+                navData.isActive ? "menu__item-active" : "menu__item"
               }
               to="/create-account"
             >
               <li
-                className="menu--item"
+                className="menu__item"
                 onClick={() =>
                   isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)
                 }
