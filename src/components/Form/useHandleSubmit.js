@@ -1,32 +1,36 @@
 import { useContext, useState } from "react";
-import { login, createUser } from "../../api/posts";
-import { AuthedContext } from "../../contexts/AuthedProvider";
+import { authUser, createUser } from "../../auth/user";
+import { UserContext } from "../../contexts/UserProvider";
+import { getCurrentUser } from "../../api/gets";
 
 export const useHandleSubmit = () => {
-  const [, setIsAuthed] = useContext(AuthedContext);
+  const [user, setUser] = useContext(UserContext);
+
   const handleClientReq = async (formType, formValues) => {
     switch (formType) {
       case "Login": {
-        const loginRes = await login(formValues.email, formValues.password);
-        const loginResObj = {
-          successStatus: loginRes,
-          redirectPath: "/",
-        };
-        if (loginRes.ok) setIsAuthed(true);
-        return loginResObj;
+        const { isSuccessfull, redirectPath } = await authUser(
+          formValues.email,
+          formValues.password
+        );
+        if (isSuccessfull) {
+          const currentUser = await getCurrentUser();
+          setUser({
+            ...user,
+            isAuthed: true,
+            userId: currentUser.id,
+            userEmail: currentUser.email,
+          });
+        }
+        return { isSuccessfull, redirectPath };
       }
       case "Create Account": {
-        const createUserRes = await createUser(
+        const { isSuccessfull, redirectPath } = await createUser(
           formValues.email,
           formValues.password,
           formValues["confirm password"]
         );
-        const createUserResObj = {
-          successStatus: createUserRes ?? false,
-          redirectPath: "/",
-        };
-        if (createUserRes?.ok) setIsAuthed(true);
-        return createUserResObj;
+        return { isSuccessfull, redirectPath };
       }
       default: {
         console.log(

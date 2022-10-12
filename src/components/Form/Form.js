@@ -29,14 +29,15 @@ const Form = ({ formSpec: { title, labelTitles, inputFields } }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const submitStatus = await handleClientReq(title, formState);
-
+    const { isSuccessfull, redirectPath } = await handleClientReq(
+      title,
+      formState
+    );
     dispatch({
       type: "NOTIFICATION START",
-      field: submitStatus.successStatus.ok,
+      field: isSuccessfull,
     });
-    if (submitStatus.successStatus.ok) {
-      const redirectPath = submitStatus.redirectPath;
+    if (isSuccessfull) {
       navigate(redirectPath);
     }
     setTimeout(() => {
@@ -68,7 +69,7 @@ const Form = ({ formSpec: { title, labelTitles, inputFields } }) => {
         })}
         <button className="btn form__btn">{title}</button>
         {formState.showNotification && (
-          <Notification isError={formState.notificationSuccess} />
+          <Notification isSuccess={formState.notificationSuccess} />
         )}
       </form>
     </div>
