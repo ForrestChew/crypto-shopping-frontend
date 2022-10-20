@@ -1,0 +1,21 @@
+.card {
+  border: 1px solid;
+  border-radius: 6px 6px 6px 6px;
+  color: black;
+}
+
+.card__heading {
+  text-align: center;
+}
+
+.card__img {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  border: 1px solid;
+}
+
+.card__info {
+  text-decoration: none;
+  text-align: center;
+}
