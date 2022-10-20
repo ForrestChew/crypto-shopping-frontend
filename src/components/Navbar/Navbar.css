@@ -1,4 +1,4 @@
-nav {
+.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,7 +80,7 @@ nav {
   height: 95%;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 875px) {
   #logo-heading {
     display: none;
   }

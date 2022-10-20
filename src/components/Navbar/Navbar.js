@@ -11,7 +11,7 @@ const Navbar = ({ authStatus }) => {
 
   return (
     <>
-      <nav>
+      <nav className="nav">
         <a href="http://localhost:3000" className="logo">
           <img id="house-icon" src={houseIcon} alt="Not Found" />
           <h3 id="logo-heading">
