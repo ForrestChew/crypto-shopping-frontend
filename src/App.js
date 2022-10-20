@@ -1,6 +1,5 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { getCurrentUser } from "./api/gets";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
@@ -9,6 +8,7 @@ import Crypto from "./pages/Crypto/Crypto";
 import Orders from "./pages/Orders/Orders";
 import Form from "./components/Form/Form";
 import Cart from "./pages/Cart/Cart";
+import Product from "./pages/Product/Product";
 import { LOGIN_FORM_SPEC, CREATE_ACCOUNT_FORM_SPEC } from "./constants";
 import { UserContext } from "./contexts/UserProvider";
 import "./App.css";
@@ -38,6 +38,7 @@ const App = () => {
           path="/create-account"
           element={<Form formSpec={CREATE_ACCOUNT_FORM_SPEC} />}
         />
+        <Route path="/products/:id" element={<Product />}></Route>
       </Routes>
     </div>
   );
