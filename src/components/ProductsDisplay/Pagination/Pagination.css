@@ -1,0 +1,21 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__menu {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+  display: flex;
+}
+
+.pagination__menu:hover {
+  cursor: pointer;
+}
+
+.pagination__item {
+  color: black;
+  border: 1px solid;
+  padding: 1rem;
+}
