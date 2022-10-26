@@ -1,10 +1,10 @@
 import { useGetProductImageUrl } from "../../hooks/useGetProductImageUrl";
-import { capitalizeStr, numToPrice } from "../../utils";
+import { capitalizeStr, numToPrice, priceToTopDealPrice } from "../../utils";
 import { NavLink } from "react-router-dom";
 import "./Card.css";
 
 const Card = ({
-  productInfo: { id, title, category, price, quantity, rating, image_title },
+  productInfo: { id, title, category, price, is_top_deal, image_title },
 }) => {
   const imgUrl = useGetProductImageUrl(image_title);
 
@@ -22,8 +22,16 @@ const Card = ({
           height="640px"
         />
         <div className="card__info">
-          <h4>{numToPrice(price)}</h4>
-          <p>Rating: {rating}/5 Stars</p>
+          <h4>
+            {is_top_deal ? (
+              <>
+                <s>{numToPrice(price)}</s> {priceToTopDealPrice(price)}
+              </>
+            ) : (
+              numToPrice(price)
+            )}
+          </h4>
+          <p>Category: {capitalizeStr(category)}</p>
         </div>
         <footer></footer>
       </article>
