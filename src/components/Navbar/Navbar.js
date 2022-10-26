@@ -41,13 +41,13 @@ const Navbar = ({ authStatus }) => {
             className={(navData) =>
               navData.isActive ? "menu__item-active" : "menu__item"
             }
-            to="/top-deals"
+            to="/products"
           >
             <li
               className="menu__item"
               onClick={() => isHamMenuOpen && setIsHamMenuOpen(!isHamMenuOpen)}
             >
-              Top Deals
+              Browse Products
             </li>
           </NavLink>
           <NavLink
