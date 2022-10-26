@@ -3,24 +3,26 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
-import TopDeals from "./pages/TopDeals/TopDeals";
 import Crypto from "./pages/Crypto/Crypto";
 import Orders from "./pages/Orders/Orders";
 import Form from "./components/Form/Form";
 import Cart from "./pages/Cart/Cart";
 import Product from "./pages/Product/Product";
+import ProductsDisplay from "./components/ProductsDisplay/ProductsDisplay";
 import { LOGIN_FORM_SPEC, CREATE_ACCOUNT_FORM_SPEC } from "./constants";
 import { UserContext } from "./contexts/UserProvider";
 import "./App.css";
 
 const App = () => {
   const [user] = useContext(UserContext);
+
   return (
     <div className="App">
       <Navbar authStatus={user.isAuthed} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/top-deals" element={<TopDeals />} />
+        <Route path="/products" element={<ProductsDisplay />} />
+        <Route path="/products/:id" element={<Product />}></Route>
         <Route path="/crypto" element={<Crypto />} />
         <Route path="/orders" element={<Orders />} />
         <Route
@@ -38,7 +40,6 @@ const App = () => {
           path="/create-account"
           element={<Form formSpec={CREATE_ACCOUNT_FORM_SPEC} />}
         />
-        <Route path="/products/:id" element={<Product />}></Route>
       </Routes>
     </div>
   );
