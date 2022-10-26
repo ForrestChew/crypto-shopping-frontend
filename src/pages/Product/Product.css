@@ -1,0 +1,42 @@
+.product {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  grid-template-rows: auto;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 3rem auto 2rem;
+}
+
+.product__view {
+  border: 1px solid;
+}
+
+#product__img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product__info {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  border: 1px solid;
+}
+
+.product__list {
+  list-style-type: none;
+}
+
+@media screen and (max-width: 850px) {
+  .product {
+    grid-template-columns: 100%;
+    margin: 4px;
+  }
+
+  .product__info {
+    text-align: center;
+  }
+
+  .product__list {
+    padding-left: 0;
+  }
+}
