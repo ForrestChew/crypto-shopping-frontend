@@ -1,30 +1,23 @@
-import scMG from "../../../assets/sc-mg.svg";
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import { useAutocomplete } from "./useAutocomplete";
 import "./SearchBar.css";
 
 const SearchBar = () => {
+  const { handleOnSearch, handleOnSelect, formatResult, items } =
+    useAutocomplete();
+
   return (
-    <div className="search">
-      <form className="search-bar-form">
-        <select name="categories" className="form--select">
-          <option>All</option>
-          <option>Top Deals</option>
-          <option>Crypto</option>
-          <option>Toys</option>
-          <option>Clothing</option>
-        </select>
-        <input
-          className="search--input"
-          type="text"
-          width="100%"
-          placeholder="Search marketplace..."
-        />
-        <input
-          id="magnifying-glass-icon"
-          type="image"
-          src={scMG}
-          alt="Search"
-        />
-      </form>
+    <div className="search-bar">
+      <ReactSearchAutocomplete
+        items={items}
+        fuseOptions={{ keys: ["title", "category"] }}
+        resultStringKeyName="title"
+        formatResult={formatResult}
+        onSearch={handleOnSearch}
+        onSelect={handleOnSelect}
+        placeholder="Search Marketplace..."
+        autoFocus
+      />
     </div>
   );
 };
