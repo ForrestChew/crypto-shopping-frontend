@@ -4,7 +4,8 @@ export const capitalizeStr = (string) => {
 
 export const numToPrice = (number) => {
   if (number) {
-    const numToArr = number.toString().split("");
+    const numWithDecimal = number.toFixed(2);
+    const numToArr = numWithDecimal.toString().split("");
     let cntTillComma = 0;
     for (let i = numToArr.length - 1; i > 0; i--) {
       cntTillComma++;
@@ -20,5 +21,5 @@ export const numToPrice = (number) => {
 };
 
 export const priceToTopDealPrice = (price) => {
-  if (price) return numToPrice((price * 0.8).toFixed(2));
+  if (price) return numToPrice(price * 0.8);
 };
