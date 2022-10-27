@@ -1,0 +1,21 @@
+.cart-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border: 1px solid;
+}
+
+.cart-container__table {
+  table-layout: fixed;
+  width: 80%;
+  border: 1px solid;
+}
+
+.cart-container__entry {
+  padding: 10rem;
+}
+
+.cart-contianer__entry:nth-child(odd) {
+  color: white;
+  background-color: gray;
+}
