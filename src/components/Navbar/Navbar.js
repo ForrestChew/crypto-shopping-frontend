@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import houseIcon from "../../assets/house-icon-svg.svg";
 import SearchBar from "./SearchBar/SearchBar";
@@ -8,6 +8,14 @@ import "./Navbar.css";
 
 const Navbar = ({ authStatus }) => {
   const [isHamMenuOpen, setIsHamMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isHamMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
+  }, [setIsHamMenuOpen, isHamMenuOpen]);
 
   return (
     <>
@@ -21,12 +29,7 @@ const Navbar = ({ authStatus }) => {
         </a>
         <SearchBar />
         <Link to="/cart">
-          <img
-            id="cart-icon"
-            className="cart"
-            src={cartIconSvg}
-            alt="Not Found"
-          />
+          <img id="cart-icon" src={cartIconSvg} alt="Not Found" />
         </Link>
         <img
           id="ham-icon"
