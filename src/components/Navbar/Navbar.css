@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #edf2ef;
+  background-color: #145c9e;
   height: 4rem;
 }
 
@@ -13,29 +13,29 @@
 
 #ham-icon {
   display: none;
+  filter: invert(1);
 }
 
 #house-icon {
   width: 3.5rem;
+  filter: invert(1);
+  margin-left: 3rem;
 }
 
 #cart-icon {
   width: 3.5rem;
+  filter: invert(1);
+  margin-right: 3rem;
 }
 
 .logo {
   display: flex;
   text-decoration: none;
-  color: black;
-}
-
-.cart {
-  width: 3.5rem;
-  margin-right: 0.75rem;
+  color: white;
 }
 
 .subnav {
-  background-color: #e6e6e6;
+  background-color: #145c9e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +53,7 @@
 .menu__item {
   list-style: none;
   font-size: 12px;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -63,26 +63,32 @@
 
 .menu__item-active {
   text-decoration: underline;
-  color: black;
+  color: white;
 }
 
 .menu-ham {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 0;
+  justify-content: space-evenly;
   text-align: center;
-  background-color: #02020b;
   padding-left: 0;
   position: absolute;
   top: 4rem;
+  margin: 0;
+  bottom: 0rem;
+  background: black;
   width: 100%;
-  height: 95%;
 }
 
 @media screen and (max-width: 875px) {
   #logo-heading {
     display: none;
+  }
+
+  #house-icon {
+    width: 3.5rem;
+    filter: invert(1);
+    margin-left: 1rem;
   }
 
   #ham-icon {
@@ -103,7 +109,7 @@
     text-decoration: underline;
   }
 
-  .cart {
+  #cart-icon {
     display: none;
   }
 
@@ -112,7 +118,7 @@
   }
 
   .subnav {
-    height: 0%;
+    height: 0;
     border-bottom: none;
   }
 }
