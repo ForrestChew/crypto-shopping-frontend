@@ -5,7 +5,8 @@ import "./Product.css";
 
 const Product = () => {
   const { id } = useParams();
-  const { product, imgUrl, isLoading } = useGetSingleProduct(id);
+  const { product, imgUrl, isLoading, quantity, adjustQuantity } =
+    useGetSingleProduct(id);
   return (
     <>
       {isLoading ? (
@@ -39,6 +40,9 @@ const Product = () => {
               <li>Product ID: {product.id}</li>
             </ul>
             <p>{product.description}</p>
+            <button onClick={() => adjustQuantity(1)}>+</button>
+            <span>Qty: {quantity}</span>
+            <button onClick={() => adjustQuantity(-1)}>-</button>
             <button className="btn">Add to Cart</button>
           </section>
         </div>

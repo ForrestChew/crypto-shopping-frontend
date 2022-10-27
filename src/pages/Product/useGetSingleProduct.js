@@ -5,6 +5,11 @@ export const useGetSingleProduct = (productId) => {
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState({});
   const [imgUrl, setImgUrl] = useState("");
+  const [quantity, setQuantity] = useState(0);
+
+  const adjustQuantity = (num) => {
+    if (quantity + num >= 0) setQuantity((quantity) => quantity + num);
+  };
 
   useEffect(() => {
     (async () => {
@@ -20,5 +25,5 @@ export const useGetSingleProduct = (productId) => {
     })();
   }, []);
 
-  return { product, imgUrl, isLoading };
+  return { product, imgUrl, isLoading, quantity, adjustQuantity };
 };
