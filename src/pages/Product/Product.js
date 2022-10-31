@@ -1,12 +1,23 @@
 import { useParams } from "react-router-dom";
-import { useGetSingleProduct } from "./useGetSingleProduct";
+import { useSingleProduct } from "./useSingleProduct";
 import { capitalizeStr, numToPrice, priceToTopDealPrice } from "../../utils";
+import Notification from "../../components/Notification/Notification";
+import Footer from "../../components/Footer/Footer";
 import "./Product.css";
 
 const Product = () => {
   const { id } = useParams();
-  const { product, imgUrl, isLoading, quantity, adjustQuantity } =
-    useGetSingleProduct(id);
+  const {
+    product,
+    imgUrl,
+    isLoading,
+    quantity,
+    adjustQuantity,
+    handleAddToCart,
+    errorType,
+    showError,
+  } = useSingleProduct(id);
+
   return (
     <>
       {isLoading ? (
@@ -40,13 +51,22 @@ const Product = () => {
               <li>Product ID: {product.id}</li>
             </ul>
             <p>{product.description}</p>
-            <button onClick={() => adjustQuantity(1)}>+</button>
-            <span>Qty: {quantity}</span>
-            <button onClick={() => adjustQuantity(-1)}>-</button>
-            <button className="btn">Add to Cart</button>
+            <div className="product__qty-selector">
+              <span>Qty: {quantity}</span>
+              <button onClick={() => adjustQuantity(-1)}>-</button>
+              <button onClick={() => adjustQuantity(1)}>+</button>
+            </div>
+            <button
+              className="btn"
+              onClick={() => handleAddToCart(product.id, quantity)}
+            >
+              Add to Cart
+            </button>
+            {showError && <Notification isSuccess={errorType} />}
           </section>
         </div>
       )}
+      <Footer />
     </>
   );
 };
