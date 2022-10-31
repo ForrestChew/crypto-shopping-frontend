@@ -1,0 +1,13 @@
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 1.25rem;
+  text-align: center;
+  background-color: #cbb9a8;
+  color: black;
+}
+
+.footer__para {
+  color: black;
+}
