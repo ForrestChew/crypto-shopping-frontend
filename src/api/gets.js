@@ -91,3 +91,29 @@ export const getProductSearchBarInfo = async (searchStr) => {
   }
   return await response.json();
 };
+
+export const getCartItems = async (userId) => {
+  const options = { method: "GET", credentials: "include" };
+  const response = await fetch(
+    `${CP_BACKEND_API_BASE_URL}/carts/${userId}`,
+    options
+  );
+
+  if (!response.ok) {
+    throw new Error("Network respoonse was not ok");
+  }
+  return await response.json();
+};
+
+export const getCartTotalPrice = async () => {
+  const options = { method: "GET", credentials: "include" };
+  const response = await fetch(
+    `${CP_BACKEND_API_BASE_URL}/carts/total-price`,
+    options
+  );
+
+  if (!response.ok) {
+    throw new Error("Network respoonse was not ok");
+  }
+  return await response.json();
+};
