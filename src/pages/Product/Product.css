@@ -4,7 +4,7 @@
   grid-template-rows: auto;
   justify-content: center;
   gap: 1rem;
-  margin: 2rem 3rem auto 2rem;
+  margin: 5rem 3rem auto 2rem;
 }
 
 .product__view {
@@ -20,6 +20,7 @@
   padding-left: 2.5rem;
   padding-right: 2.5rem;
   border: 1px solid;
+  background-color: white;
 }
 
 .product__list {
@@ -39,4 +40,8 @@
   .product__list {
     padding-left: 0;
   }
+}
+
+.product__qty-selector {
+  padding: 12px;
 }
