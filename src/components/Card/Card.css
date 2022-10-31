@@ -1,7 +1,7 @@
 .card {
   border: 1px solid;
-  border-radius: 6px 6px 6px 6px;
   color: black;
+  width: 90%;
 }
 
 .card__heading {
@@ -11,8 +11,8 @@
 .card__img {
   max-width: 100%;
   height: auto;
-  width: auto;
-  border: 1px solid;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .card__info {
