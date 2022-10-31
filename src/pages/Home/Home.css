@@ -1,0 +1,38 @@
+#shop-bags-icon {
+  max-width: 100%;
+  width: 35%;
+}
+
+.home {
+  display: flex;
+  margin: 6rem;
+  justify-content: space-evenly;
+}
+
+.home__heading-container {
+  margin: 6rem 0;
+}
+
+.home__heading {
+  font-size: 60px;
+}
+
+@media screen and (max-width: 875px) {
+  .home__heading-container {
+    margin: 0;
+  }
+  .home {
+    margin: 0;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .home__footer {
+    display: none;
+  }
+
+  #shop-bags-icon {
+    margin: 0 auto 0 auto;
+  }
+}
