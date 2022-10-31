@@ -11,16 +11,19 @@ export const useCart = () => {
 
   const removeCartItem = async (productId) => {
     await deleteCartItem(productId);
+    fetchCartData();
+  };
+
+  const fetchCartData = async () => {
+    const getItemsResponse = await getCartItems(user.userId);
+    setCartItems(getItemsResponse);
+    const getItemsPriceresponse = await getCartTotalPrice();
+    setTotalCartPrice(getItemsPriceresponse);
   };
 
   useEffect(() => {
-    (async () => {
-      const getItemsResponse = await getCartItems(user.userId);
-      setCartItems(getItemsResponse);
-      const getItemsPriceresponse = await getCartTotalPrice();
-      setTotalCartPrice(getItemsPriceresponse);
-    })();
-  }, [cartItems]);
+    fetchCartData();
+  }, [setCartItems]);
 
   return { cartItems, totalCartPrice, removeCartItem };
 };
