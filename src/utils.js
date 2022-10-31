@@ -23,3 +23,7 @@ export const numToPrice = (number) => {
 export const priceToTopDealPrice = (price) => {
   if (price) return numToPrice(price * 0.8);
 };
+
+export const cartPriceIncludingTax = (number) => {
+  if (number) return numToPrice(number * 1.08);
+};
